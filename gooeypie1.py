@@ -1,8 +1,13 @@
 import gooeypie as gp
 
-app = gp.GooeyPieApp('Hello')
-# Instantiate a 'GooeyPieApp'
+def text_change(event):
+    text = text_box.text
+    print(text)
 
-app.width = 1000
+app = gp.GooeyPieApp('See the Good News')
+
+text_box = gp.Textbox(app)
+text_box.add_event_listener('change')
+
 
 app.run()
