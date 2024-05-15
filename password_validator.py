@@ -1,27 +1,27 @@
 #password_validator
-import gooeypie as gp
 
 #special_chars = "!@#$%^&*()_+[]{}?:;|'\"\\,./~`"
 # Check each character in the password
-def strenth_test(password):
-    security = 0
-    for char in password:
-        if len >= 8:
-            security += 1
-        elif len >= 8 and len >= 12:
-            security += 2
-        elif char.isdigit():
-            digits = True
-            security += 1
+# def strenth_test(password):
+#     security = 0
+#     for char in password:
+#         if len >= 8:
+#             security += 1
+#         elif len >= 8 and len >= 12:
+#             security += 2
+#         elif char.isdigit():
+#             digits = True
+#             security += 1
     
-    # Check overall strength
-    strength = "Weak"
-    if security <= 3:
-        strength = "Medium"
-    elif len(password) <= 5:
-        strength = "Good Stuff"
+#     # Check overall strength
+#     strength = "Weak"
+#     if security <= 3:
+#         strength = "Medium"
+#     elif len(password) <= 5:
+#         strength = "Good Stuff"
 
 #################
+import gooeypie as gp
 
 def on_text_change(event):
     text = text_box.text
