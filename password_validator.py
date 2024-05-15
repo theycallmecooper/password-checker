@@ -27,9 +27,8 @@ def on_text_change(event):
     text = text_box.text
     print(text)
 
-    # run the logic for checks
-    # ren check for length
-    if len(text) < 10:
+# Check different attributes to see if password is good (plan for future use class attributes)    
+    if len(text) < 10: #Checks length
         print("Text under 10")
 
     # check for symbols
@@ -37,11 +36,11 @@ def on_text_change(event):
 
     # check against list of common passwords
     
-
-app = gp.GooeyPieApp('Might be useful for your assessment')
+app = gp.GooeyPieApp('Password Validator')
 
 text_box = gp.Textbox(app)
 text_box.add_event_listener('change', on_text_change)
+#text_box.background_colour = 'black'
 
 label = gp.Label(app, 'blank')
 
