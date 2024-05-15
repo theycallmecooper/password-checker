@@ -21,24 +21,6 @@ def strenth_test(password):
     elif len(password) <= 5:
         strength = "Good Stuff"
 
-    # Display strength
-    strength_lbl.set_text(f"Strength: {strength}")
-
-app = gp.GooeyPieApp('Password Checker')
-
-pass_lbl = gp.Label(app, "Password")
-pass_inp = gp.Secret(app)
-strength_lbl = gp.Label(app, "Strength: ")
-
-check_btn = gp.Button(app, "Check Strength", pass_inp)
-
-app.set_grid(4, 2)
-app.add(pass_lbl, 1, 1)
-app.add(pass_inp, 1, 2)
-app.add(check_btn, 1, 3)
-app.add(strength_lbl, 2, 2)
-
-app.run()
 #################
 
 def on_text_change(event):
