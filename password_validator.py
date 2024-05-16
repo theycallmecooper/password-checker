@@ -23,29 +23,46 @@
 #################
 import gooeypie as gp
 
-def on_text_change(event):
-    text = text_box.text
-    print(text)
+def say_hello(event):
+    hello_lbl.text = 'Check your passwords security'
+
+def login(event):
+    if pass_inp.text == 'bestpassword':
+        status_lbl.text = '✔ Access granted!'
+    else:
+        status_lbl.text = '❌ Access denied!'
 
 # Check different attributes to see if password is good (plan for future use class attributes)    
-    if len(text) < 10: #Checks length
-        print("Text under 10")
 
     # check for symbols
-
 
     # check against list of common passwords
     
 app = gp.GooeyPieApp('Password Validator')
-
-text_box = gp.Textbox(app)
-text_box.add_event_listener('change', on_text_change)
 #text_box.background_colour = 'black'
 
-label = gp.Label(app, 'blank')
+
+
+hello_btn = gp.Button(app, 'Say Hello', say_hello)
+hello_lbl = gp.Label(app, '')
 
 app.set_grid(2, 1)
-app.add(text_box, 1, 1)
-app.add(label, 2, 1)
+app.add(hello_btn, 1, 1, align='center')
+app.add(hello_lbl, 2, 1, align='center')
+
+user_lbl = gp.Label(app, "Username")
+user_inp = gp.Input(app)
+pass_lbl = gp.Label(app, "Password")
+pass_inp = gp.Secret(app)
+login_btn = gp.Button(app, 'Login', login)
+status_lbl = gp.Label(app, '')
+
+app.set_grid(4, 2)
+app.add(user_lbl, 1, 1)
+app.add(user_inp, 1, 2)
+app.add(pass_lbl, 2, 1)
+app.add(pass_inp, 2, 2)
+app.add(login_btn, 3, 2)
+app.add(status_lbl, 4, 2)
 
 app.run()
