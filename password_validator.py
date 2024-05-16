@@ -43,23 +43,19 @@ app = gp.GooeyPieApp('Password Validator')
 
 
 
-hello_btn = gp.Button(app, 'Say Hello', say_hello)
+hello_btn = gp.Button(app, 'Open Validator', say_hello)
 hello_lbl = gp.Label(app, '')
 
 app.set_grid(2, 1)
 app.add(hello_btn, 1, 1, align='center')
 app.add(hello_lbl, 2, 1, align='center')
 
-user_lbl = gp.Label(app, "Username")
-user_inp = gp.Input(app)
 pass_lbl = gp.Label(app, "Password")
 pass_inp = gp.Secret(app)
-login_btn = gp.Button(app, 'Login', login)
+login_btn = gp.Button(app, 'Check Password', login)
 status_lbl = gp.Label(app, '')
 
 app.set_grid(4, 2)
-app.add(user_lbl, 1, 1)
-app.add(user_inp, 1, 2)
 app.add(pass_lbl, 2, 1)
 app.add(pass_inp, 2, 2)
 app.add(login_btn, 3, 2)
