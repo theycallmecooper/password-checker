@@ -1,27 +1,35 @@
 #password_validator
+import gooeypie as gp
+import re
 
-#special_chars = "!@#$%^&*()_+[]{}?:;|'\"\\,./~`"
+def special_chars(s):
+    pattern = re.compile(r'["!@#$%^&*()_+[]{}?:;|'\"\\,./~`"]')
+    # Search for the pattern in the string
+    if pattern.search(s):
+        return True
+        return False
+
+
 # Check each character in the password
-# def strenth_test(password):
-#     security = 0
-#     for char in password:
-#         if len >= 8:
-#             security += 1
-#         elif len >= 8 and len >= 12:
-#             security += 2
-#         elif char.isdigit():
-#             digits = True
-#             security += 1
+def password_checker(event):
+    password = pass_inp.text
+    if len(password) <= 0: #password length
+        status_lbl.text = 'Please enter a password!'
+    elif len(password) >= 0 and len(password) <= 4:
+        status_lbl.text = 'Please make the password at least 5 characters long'
+    elif password.isdigit() == True: # just digits
+        status_lbl.text = 'Try having more letters'
+    elif password.isalpha() == True: # just letters
+        status_lbl.text = 'Try having more numbers'
+    elif not has_special_characters(password): # no special characters
+        status_lbl.text = 'Try including a special character'
+    else: # Requirements all met
+        status_lbl.text = 'PERFECT'
+
+    status_lbl.update()
     
-#     # Check overall strength
-#     strength = "Weak"
-#     if security <= 3:
-#         strength = "Medium"
-#     elif len(password) <= 5:
-#         strength = "Good Stuff"
 
 #################
-import gooeypie as gp
 
 def say_hello(event):
     hello_lbl.text = 'Check your passwords security'
