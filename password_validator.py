@@ -3,11 +3,11 @@ import gooeypie as gp
 import re
 
 def special_chars(s):
-    pattern = re.compile(r'["!@#$%^&*()_+[]{}?:;|'\"\\,./~`"]')
+    pattern = re.compile(r'[!@#$%^&*(),.?":{}|<>]')
     # Search for the pattern in the string
     if pattern.search(s):
         return True
-        return False
+    return False
 
 
 # Check each character in the password
@@ -21,7 +21,7 @@ def password_checker(event):
         status_lbl.text = 'Try having more letters'
     elif password.isalpha() == True: # just letters
         status_lbl.text = 'Try having more numbers'
-    elif not has_special_characters(password): # no special characters
+    elif not special_chars(password): # no special characters
         status_lbl.text = 'Try including a special character'
     else: # Requirements all met
         status_lbl.text = 'PERFECT'
@@ -34,11 +34,6 @@ def password_checker(event):
 def say_hello(event):
     hello_lbl.text = 'Check your passwords security'
 
-def login(event):
-    if pass_inp.text == 'bestpassword':
-        status_lbl.text = '✔ Access granted!'
-    else:
-        status_lbl.text = '❌ Access denied!'
 
 # Check different attributes to see if password is good (plan for future use class attributes)    
 
