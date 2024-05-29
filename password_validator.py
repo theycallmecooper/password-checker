@@ -27,17 +27,9 @@ def password_checker(event):
         status_lbl.text = 'PERFECT'
 
     status_lbl.update()
-
-# Function to open the second window
+    
 def open_second_window(event):
-    second_win = gp.GooeyPieApp('Second Window')
-    second_win.set_size(300, 200)
-    
-    label = gp.Label(second_win, 'This is the second window')
-    second_win.add(label, 1, 1)
-    
-    second_win.run()
-    
+    second_win.show()
 
 #################
 
@@ -51,31 +43,38 @@ def say_hello(event):
 
     # check against list of common passwords
     
-app = gp.GooeyPieApp('Password Validator')
 #text_box.background_colour = 'black'
 
-main_win = gp.GooeyPieApp('Main Window')
-main_win.set_size(300, 200)
+app = gp.GooeyPieApp('Password Validator')
+app.set_size(300, 200)
 
 hello_btn = gp.Button(app, 'Open Validator', say_hello)
 hello_lbl = gp.Label(app, '')
 
-app.set_grid(2, 1)
-app.add(hello_btn, 1, 1, align='center')
-app.add(hello_lbl, 2, 1, align='center')
+app.set_grid(6, 2)
+app.add(hello_btn, 1, 1, column_span=2, align='center')
+app.add(hello_lbl, 2, 1, column_span=2, align='center')
 
+# Main window and password check UI
 pass_lbl = gp.Label(app, "Password")
 pass_inp = gp.Secret(app)
-login_btn = gp.Button(app, 'Check Password')
+login_btn = gp.Button(app, 'Check Password', password_checker)
 status_lbl = gp.Label(app, '')
 
-open_button = gp.Button(main_win, 'Open Second Window', open_second_window)
-main_win.add(open_button, 1, 1)
+app.add(pass_lbl, 3, 1)
+app.add(pass_inp, 3, 2)
+app.add(login_btn, 4, 2)
+app.add(status_lbl, 5, 1, column_span=2)
 
-app.set_grid(4, 2)
-app.add(pass_lbl, 2, 1)
-app.add(pass_inp, 2, 2)
-app.add(login_btn, 3, 2)
-app.add(status_lbl, 4, 2)
+# Open second window button in the main app
+open_button = gp.Button(app, 'Open Second Window', open_second_window)
+app.add(open_button, 6, 1, column_span=2, align='center')
+
+# Second window setup
+second_win = gp.Window(app, 'Second Window')
+second_win.set_size(300, 200)
+label = gp.Label(second_win, 'This is the second window')
+second_win.set_grid(1, 1)
+second_win.add(label, 1, 1)
 
 app.run()
