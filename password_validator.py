@@ -27,6 +27,16 @@ def password_checker(event):
         status_lbl.text = 'PERFECT'
 
     status_lbl.update()
+
+# Function to open the second window
+def open_second_window(event):
+    second_win = gp.GooeyPieApp('Second Window')
+    second_win.set_size(300, 200)
+    
+    label = gp.Label(second_win, 'This is the second window')
+    second_win.add(label, 1, 1)
+    
+    second_win.run()
     
 
 #################
@@ -44,7 +54,8 @@ def say_hello(event):
 app = gp.GooeyPieApp('Password Validator')
 #text_box.background_colour = 'black'
 
-
+main_win = gp.GooeyPieApp('Main Window')
+main_win.set_size(300, 200)
 
 hello_btn = gp.Button(app, 'Open Validator', say_hello)
 hello_lbl = gp.Label(app, '')
@@ -55,8 +66,11 @@ app.add(hello_lbl, 2, 1, align='center')
 
 pass_lbl = gp.Label(app, "Password")
 pass_inp = gp.Secret(app)
-login_btn = gp.Button(app, 'Check Password', login)
+login_btn = gp.Button(app, 'Check Password')
 status_lbl = gp.Label(app, '')
+
+open_button = gp.Button(main_win, 'Open Second Window', open_second_window)
+main_win.add(open_button, 1, 1)
 
 app.set_grid(4, 2)
 app.add(pass_lbl, 2, 1)
