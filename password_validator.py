@@ -1,6 +1,11 @@
 #password_validator
 import gooeypie as gp
 import re
+from random import choice
+
+colors = ['Cornflowerblue', 'LimeGreen', 'Orchid', 'DarkSlateGray']
+fonts = ['Avenir']
+styles = ['italic', 'normal'] 
 
 def special_chars(s):
     pattern = re.compile(r'[!@#$%^&*(),.?":{}|<>]')
@@ -26,6 +31,12 @@ def password_checker(event):
         status_lbl.text = 'PERFECT'
 
     status_lbl.update()
+
+def style_change(event):
+    styled_label.color = choice(colors)
+    styled_label.background_color = choice(colors)
+    styled_label.font_style = choice(colors)
+    styled_label.font_name = choice(colors)
     
 def open_second_window(event):
     second_win.show()
@@ -41,6 +52,11 @@ def say_hello(event):
 
 app = gp.GooeyPieApp('Password Validator')
 app.set_size(300, 200)
+
+styled_label = gp.StyleLabel(app, 'Style...?')
+styled_label.font_size = 40
+styled_label.align = 'center'
+styled_label.add_event_listener('mouse_over', style_change)
 
 hello_ttl = gp.Label(app, 'Welcome to SalusPekt!')
 
