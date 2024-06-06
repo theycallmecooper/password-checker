@@ -51,7 +51,7 @@ def say_hello(event):
     hello_ttl.text = 'Check your passwords security'
 
 app = gp.GooeyPieApp('Password Validator')
-app.set_size(300, 200)
+app.set_size(400, 260)
 
 styled_label = gp.StyleLabel(app, 'Style...?')
 styled_label.font_size = 40
@@ -73,7 +73,7 @@ app.add(faq_button, 4, 1, column_span=2, align='right')
 
 # Second window setup
 second_win = gp.Window(app, 'Password Validator')
-second_win.set_size(300, 200)
+second_win.set_size(400, 260)
 
 pass_lbl = gp.Label(second_win, "Password")
 pass_inp = gp.Secret(second_win)
@@ -89,19 +89,19 @@ second_win.add(status_lbl, 3, 1, column_span=2)
 # Third window (faq) setup
 
 faq_win = gp.Window(app, '?')
-faq_win.set_size(300, 200)
-
-faq_win.set_grid(6, 2)
+faq_win.set_size(400, 260)
+faq_lbl = gp.Label(faq_win, "Frequently Asked Questions:\n\nQ1: How to use the app?\nA1: Enter your password and click 'Check Password'.\n\nQ2: What does the app check?\nA2: The app checks if your password meets the security criteria.\n\nQ3: What are the criteria?\nA3: The password should be at least 5 characters long, contain letters, numbers, and special characters.")
+faq_win.set_grid(1, 1)
+faq_win.add(faq_lbl, 1, 1)
 
 # Fourth Window (About) setup
 
 about_win = gp.Window(app, 'About')
-about_win.set_size(300, 200)
-
-about_win.set_grid(6, 2)
-
-
-###################################################################
+about_win.set_size(400, 260)
+about_ttl = gp.Label(app, 'About my app')
+about_lbl = gp.Label(about_win, "About SalusPekt:\n\nSalusPekt is a password validation app designed to help users create strong, secure passwords. The app checks for length, the presence of letters, numbers, and special characters to ensure your password is robust.")
+about_win.set_grid(1, 1)
+about_win.add(about_lbl, 1, 1)
 
 app.run()
 
