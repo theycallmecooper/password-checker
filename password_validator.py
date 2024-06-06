@@ -90,15 +90,30 @@ second_win.add(status_lbl, 3, 1, column_span=2)
 
 faq_win = gp.Window(app, '?')
 faq_win.set_size(400, 260)
-faq_lbl = gp.Label(faq_win, "Frequently Asked Questions:\n\nQ1: How to use the app?\nA1: Enter your password and click 'Check Password'.\n\nQ2: What does the app check?\nA2: The app checks if your password meets the security criteria.\n\nQ3: What are the criteria?\nA3: The password should be at least 5 characters long, contain letters, numbers, and special characters.")
-faq_win.set_grid(1, 1)
-faq_win.add(faq_lbl, 1, 1)
+faq_q1 = gp.Label(faq_win, "Q1: How to use the app?")
+faq_a1 = gp.Dropdown(faq_win, ["Enter your password and click 'Check Password'."])
+faq_a1.deselect()
+
+faq_q2 = gp.Label(faq_win, "Q2: What does the app check?")
+faq_a2 = gp.Dropdown(faq_win, ["The app checks if your password meets the security criteria."])
+faq_a2.deselect()
+
+faq_q3 = gp.Label(faq_win, "Q3: What are the criteria?")
+faq_a3 = gp.Dropdown(faq_win, ["The password should be at least 5 characters long, contain letters, numbers, and special characters."])
+faq_a3.deselect()
+
+faq_win.set_grid(6, 2)
+faq_win.add(faq_q1, 1, 1, column_span=2)
+faq_win.add(faq_a1, 2, 1, column_span=2)
+faq_win.add(faq_q2, 3, 1, column_span=2)
+faq_win.add(faq_a2, 4, 1, column_span=2)
+faq_win.add(faq_q3, 5, 1, column_span=2)
+faq_win.add(faq_a3, 6, 1, column_span=2)
 
 # Fourth Window (About) setup
 
 about_win = gp.Window(app, 'About')
 about_win.set_size(400, 260)
-about_ttl = gp.Label(app, 'About my app')
 about_lbl = gp.Label(about_win, "About SalusPekt:\n\nSalusPekt is a password validation app designed to help users create strong, secure passwords. The app checks for length, the presence of letters, numbers, and special characters to ensure your password is robust.")
 about_win.set_grid(1, 1)
 about_win.add(about_lbl, 1, 1)
