@@ -6,7 +6,7 @@ import random
 from random import choice
 
 colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray']
-fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 'chiller']
+fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 'chiller', 'calibri', 'cooper black']
 styles = ['italic', 'normal']
 
 def special_chars(s):
@@ -81,32 +81,43 @@ def say_hello(event):
 app = gp.GooeyPieApp('Password Validator')
 app.set_size(400, 260)
 
-styled_label = gp.StyleLabel(app, 'Style...?')
-styled_label.font_size = 40
+styled_label = gp.StyleLabel(app, 'Welcome to SalusPekt')
+styled_label.font_size = 25
+styled_label.color = 'orchid'
 styled_label.align = 'center'
-styled_label.font_name = 'avenir'
-styled_label.add_event_listener('mouse_over', style_change)
+styled_label.font_name = 'cooper black'
 
-hello_ttl = gp.Label(app, 'Welcome to SalusPekt!')
-styled_label.font_name = 'avenir'
+hello_ttl = gp.StyleLabel(app, 'SalusPekt!')
+hello_ttl.font_size = 10
+hello_ttl.color = 'black'
+hello_ttl.align = 'center'
+hello_ttl.font_name = 'cooper black'
+
+sub_ttl = gp.StyleLabel(app, 'Your faithful online password validator!')
+sub_ttl.font_size = 10
+sub_ttl.color = 'black'
+sub_ttl.align = 'center'
+sub_ttl.font_name = 'cooper black'
 
 open_button = gp.Button(app, 'Open Validator', open_second_window)
 open_button.font_name = 'avenir'
-open_button.width = 30
+open_button.width = 60
 
 about_button = gp.Button(app, 'About', open_about_window)
 about_button.font_name = 'avenir'
 about_button.width = 10
 
-faq_button = gp.Button(app, '?', open_faq_window)
+faq_button = gp.Button(app, '❓', open_faq_window)
 faq_button.font_name = 'avenir'
 faq_button.width = 10
 
 app.set_grid(6, 2)
-app.add(hello_ttl, 2, 1, column_span=2, align='center')
-app.add(open_button, 6, 1, column_span=2, align='left')
-app.add(about_button, 5, 1, column_span=2, align='right')
-app.add(faq_button, 4, 1, column_span=2, align='right')
+app.add(styled_label, 2, 1, column_span=2, align='center')
+app.add(hello_ttl, 3, 1, column_span=2, align='center')
+app.add(sub_ttl, 4, 1, column_span=2, align='center')
+app.add(open_button, 6, 1, column_span=1, align='left')
+app.add(about_button, 6, 2, column_span=1, align='right')
+app.add(faq_button, 5, 2, column_span=1, align='right')
 
 # Second window setup
 second_win = gp.Window(app, 'Password Validator')
@@ -148,7 +159,7 @@ about_win = gp.Window(app, 'About')
 about_win.set_size(400, 260)
 about_lbl = gp.Label(about_win, "About SalusPekt:\n\nSalusPekt is a password validation app designed to help users create strong, secure passwords. The app checks for length, the presence of letters, numbers, and special characters to ensure your password is robust.")
 about_lbl.font_name = 'avenir'
-about_win.set_grid(1, 1)
-about_win.add(about_lbl, 1, 1)
 
+app.set_grid(1, 1)
+app.add(styled_label, 1, 1, fill=True, stretch=True)
 app.run()
