@@ -5,9 +5,9 @@ import string
 import random
 from random import choice
 
-colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray']
+colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray', 'Crimson', 'Wheat', 'MediumTurquoise', 'Black', 'LightSeaGreen', 'DarkMagenta']
 fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 'chiller', 'calibri', 'cooper black']
-styles = ['italic', 'normal']
+styles = ['italic', 'normal', 'bold']
 
 def special_chars(s):
     pattern = re.compile(r'[!@#$%^&*(),.?":{}|<>]')
@@ -81,25 +81,25 @@ def say_hello(event):
 app = gp.GooeyPieApp('Password Validator')
 app.set_size(400, 260)
 
-styled_label = gp.StyleLabel(app, 'Welcome to SalusPekt')
+styled_label = gp.StyleLabel(app, 'Welcome to Password Chef')
 styled_label.font_size = 25
-styled_label.color = 'orchid'
+styled_label.color = 'LightSeaGreen'
 styled_label.align = 'center'
 styled_label.font_name = 'cooper black'
 
-hello_ttl = gp.StyleLabel(app, 'SalusPekt!')
-hello_ttl.font_size = 10
+hello_ttl = gp.StyleLabel(app, 'Password Chef!')
+hello_ttl.font_size = 18
 hello_ttl.color = 'black'
 hello_ttl.align = 'center'
 hello_ttl.font_name = 'cooper black'
 
 sub_ttl = gp.StyleLabel(app, 'Your faithful online password validator!')
-sub_ttl.font_size = 10
-sub_ttl.color = 'black'
+sub_ttl.font_size = 13
+sub_ttl.color = 'DarkMagenta'
 sub_ttl.align = 'center'
 sub_ttl.font_name = 'cooper black'
 
-open_button = gp.Button(app, 'Open Validator', open_second_window)
+open_button = gp.Button(app, 'Cook up your password!', open_second_window)
 open_button.font_name = 'avenir'
 open_button.width = 60
 
@@ -144,7 +144,7 @@ second_win.add(pass_inp, 1, 2)
 second_win.add(show_password_cb, 2, 2)
 second_win.add(login_btn, 3, 2)
 second_win.add(status_lbl, 4, 1, column_span=2)
-second_win.add(score_bar, 5, 1, column_span=2)
+second_win.add(score_bar, 5, 1, column_span=2, fill=True)
 
 # Third window (faq) setup
 faq_win = gp.Window(app, '?')
@@ -157,9 +157,12 @@ faq_win.add(faq_lbl, 1, 1)
 # Fourth Window (About) setup
 about_win = gp.Window(app, 'About')
 about_win.set_size(400, 260)
-about_lbl = gp.Label(about_win, "About SalusPekt:\n\nSalusPekt is a password validation app designed to help users create strong, secure passwords. The app checks for length, the presence of letters, numbers, and special characters to ensure your password is robust.")
-about_lbl.font_name = 'avenir'
+about_lbl = gp.StyleLabel(about_win, "About Password Chef:\n\nPassword Chef is a password validation app designed to help users create strong, secure passwords.\nThe app checks for length, the presence of letters, numbers, and special characters to ensure\n your password is robust. It will be tested through different things such as (but not limited to)\nthe character length, if it contains special characters, if it contains numbers or if it contains capitals.\nA stronger password lessen the likelihood of having your information breached in a data leak.")
+about_lbl.font_size = 15
+about_lbl.color = 'LimeGreen'
+about_lbl.align = 'center'
+about_lbl.font_name = 'cooper black'
+about_win.set_grid(1, 1)  # Setting the grid layout for the window
+about_win.add(about_lbl, 1, 1)  # Adding the label to the window
 
-app.set_grid(1, 1)
-app.add(styled_label, 1, 1, fill=True, stretch=True)
 app.run()
