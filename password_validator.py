@@ -6,7 +6,7 @@ import random
 from random import choice
 
 colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray', 'Crimson', 'Wheat', 'MediumTurquoise', 'Black', 'LightSeaGreen', 'DarkMagenta']
-fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 'chiller', 'calibri', 'cooper black']
+fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 'chiller', 'calibri', 'cooper black', 'aptos']
 styles = ['italic', 'normal', 'bold']
 
 def special_chars(s):
@@ -18,6 +18,10 @@ def generate_strong_password():
     all_characters = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(random.choice(all_characters) for i in range(length))
     return password
+
+def copy_password(event):
+    """copies password to clipboard"""
+    app.copy_to_clipboard(pass_inp.text)
 
 def password_checker(event=None):
     with open("10k-most-common.txt", "r") as file: # Opens the .txt file and puts it into a list
@@ -119,11 +123,12 @@ app.add(open_button, 6, 1, column_span=1, align='left')
 app.add(about_button, 6, 2, column_span=1, align='right')
 app.add(faq_button, 5, 2, column_span=1, align='right')
 
-# Second window setup
+# Second window (Validator) setup
 second_win = gp.Window(app, 'Password Validator')
 second_win.set_size(400, 300)
 
-pass_lbl = gp.Label(second_win, "Password")
+pass_lbl = gp.StyleLabel(second_win, "Password")
+pass_lbl.font_size = 10
 pass_lbl.font_name = 'avenir'
 pass_inp = gp.Secret(second_win)
 pass_inp.font_name = 'avenir'
@@ -134,6 +139,7 @@ status_lbl = gp.Label(second_win, '')
 status_lbl.font_name = 'avenir'
 show_password_cb = gp.Checkbox(second_win, 'Show password')
 show_password_cb.add_event_listener('change', toggle_password_visibility)
+copy_btn = gp.Button(second_win, 'Copy to clipboard', copy_password)
 
 score_bar = gp.Progressbar(second_win)
 score_bar.value = 0
@@ -141,15 +147,16 @@ score_bar.value = 0
 second_win.set_grid(6, 2)
 second_win.add(pass_lbl, 1, 1)
 second_win.add(pass_inp, 1, 2)
-second_win.add(show_password_cb, 2, 2)
-second_win.add(login_btn, 3, 2)
+second_win.add(show_password_cb, 2, 1)
+second_win.add(copy_btn, 2, 2)
+second_win.add(login_btn, 3, 1)
 second_win.add(status_lbl, 4, 1, column_span=2)
 second_win.add(score_bar, 5, 1, column_span=2, fill=True)
 
 # Third window (faq) setup
 faq_win = gp.Window(app, '?')
 faq_win.set_size(400, 260)
-faq_lbl = gp.Label(faq_win, "Frequently Asked Questions:\n\nQ1: How to use the app?\nA1: Enter your password and click 'Check Password'.\n\nQ2: What does the app check?\nA2: The app checks if your password meets the security criteria.\n\nQ3: What are the criteria?\nA3: The password should be at least 5 characters long, contain letters, numbers, and special characters.")
+faq_lbl = gp.StyleLabel(faq_win, "Frequently Asked Questions:\n\nQ1: How to use the app?\nA1: Enter your password and click 'Check Password'.\n\nQ2: What does the app check?\nA2: The app checks if your password meets the security criteria.\n\nQ3: What are the criteria?\nA3: The password should be at least 5 characters long, contain letters, numbers, and special characters.")
 faq_lbl.font_name = 'avenir'
 faq_win.set_grid(2, 2)
 faq_win.add(faq_lbl, 1, 1)
