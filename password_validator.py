@@ -30,6 +30,12 @@ def password_checker(event=None):
     password = pass_inp.text
     pass_level = 100
 
+    common_lbl.text = '✔' if password not in password_list else '✘'
+    length_lbl.text = '✔' if len(password) > 10 else '✘'
+    digits_lbl.text = '✔' if any(char.isdigit() for char in password) else '✘'
+    letters_lbl.text = '✔' if any(char.isalpha() for char in password) else '✘'
+    special_lbl.text = '✔' if special_chars(password) else '✘'
+
     if password in password_list:
         status_lbl.text = 'This password will probably get hacked buddy'
         suggested_password = generate_strong_password()
@@ -125,7 +131,7 @@ app.add(faq_button, 5, 2, column_span=1, align='right')
 
 # Second window (Validator) setup
 second_win = gp.Window(app, 'Password Validator')
-second_win.set_size(400, 300)
+second_win.set_size(400, 350)
 
 pass_lbl = gp.StyleLabel(second_win, "Password")
 pass_lbl.font_size = 10
@@ -141,17 +147,44 @@ show_password_cb = gp.Checkbox(second_win, 'Show password')
 show_password_cb.add_event_listener('change', toggle_password_visibility)
 copy_btn = gp.Button(second_win, 'Copy to clipboard', copy_password)
 
+# Criteria labels and indicators
+common_lbl = gp.Label(second_win, '✘')
+length_lbl = gp.Label(second_win, '✘')
+digits_lbl = gp.Label(second_win, '✘')
+letters_lbl = gp.Label(second_win, '✘')
+special_lbl = gp.Label(second_win, '✘')
+
+criteria_lbl = gp.Label(second_win, 'Criteria Met:')
+common_criteria_lbl = gp.Label(second_win, 'Not a common password:')
+length_criteria_lbl = gp.Label(second_win, 'Length > 10:')
+digits_criteria_lbl = gp.Label(second_win, 'Contains digits:')
+letters_criteria_lbl = gp.Label(second_win, 'Contains letters:')
+special_criteria_lbl = gp.Label(second_win, 'Contains special chars:')
+
 score_bar = gp.Progressbar(second_win)
 score_bar.value = 0
 
-second_win.set_grid(6, 2)
+second_win.set_grid(10, 3)
 second_win.add(pass_lbl, 1, 1)
 second_win.add(pass_inp, 1, 2)
 second_win.add(show_password_cb, 2, 1)
 second_win.add(copy_btn, 2, 2)
 second_win.add(login_btn, 3, 1)
 second_win.add(status_lbl, 4, 1, column_span=2)
-second_win.add(score_bar, 5, 1, column_span=2, fill=True)
+second_win.add(criteria_lbl, 5, 1)
+second_win.add(score_bar, 10, 1, column_span=2, fill=True)
+
+# Adding criteria labels and indicators to the window
+second_win.add(common_criteria_lbl, 5, 2)
+second_win.add(common_lbl, 5, 3)
+second_win.add(length_criteria_lbl, 6, 2)
+second_win.add(length_lbl, 6, 3)
+second_win.add(digits_criteria_lbl, 7, 2)
+second_win.add(digits_lbl, 7, 3)
+second_win.add(letters_criteria_lbl, 8, 2)
+second_win.add(letters_lbl, 8, 3)
+second_win.add(special_criteria_lbl, 9, 2)
+second_win.add(special_lbl, 9, 3)
 
 # Third window (faq) setup
 faq_win = gp.Window(app, '?')
