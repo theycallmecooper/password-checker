@@ -58,7 +58,7 @@ def password_checker(event=None):
             status_lbl.text = 'Use a special character'
             pass_level = 75
         else:  # Requirements all met
-            status_lbl.text = 'PERFECT!!!'
+            status_lbl.text = 'MAGNIFICO!!!'
             pass_level = 100
 
     score_bar.value = pass_level
