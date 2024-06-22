@@ -4,9 +4,9 @@
 
 <h1>Password Checker Assessment</h1>
 
-![connections1](https://github.com/theycallmecooper/Assessment-Connections/assets/150302388/76ab2271-8987-429c-b6d3-f97c31967cc6)
+![kitty-logo](https://github.com/theycallmecooper/password-checker/assets/150302388/bb9e58f8-925e-44ee-802d-e443b87c749d)
 
-<p>PASSWORD CHEF</p>
+<p>PASSWORD CHEF: #1 since the day God on the 7th day</p>
 
 
 <h2>About:</h2>
