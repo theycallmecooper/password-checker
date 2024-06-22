@@ -1,6 +1,6 @@
 <body>
 
- ![cutie2](https://github.com/theycallmecooper/Assessment-Connections/assets/150302388/f0627361-ac54-409c-aa39-5df8ea38cd9a)
+ ![Designer (3)](https://github.com/theycallmecooper/password-checker/assets/150302388/dc321999-68f1-4eab-a6aa-67aa900fb832)
 
 <h1>Connections Assessment</h1>
 
