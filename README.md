@@ -1,12 +1,12 @@
 <body>
 
- ![Designer (3)](https://github.com/theycallmecooper/password-checker/assets/150302388/dc321999-68f1-4eab-a6aa-67aa900fb832)
+![password_chef1](https://github.com/theycallmecooper/password-checker/assets/150302388/6fc64de5-66a1-4a96-a1dc-45f29b979093)
 
-<h1>Connections Assessment</h1>
+<h1>Password Checker Assessment</h1>
 
 ![connections1](https://github.com/theycallmecooper/Assessment-Connections/assets/150302388/76ab2271-8987-429c-b6d3-f97c31967cc6)
 
-<p>Welcome to Connections (but better)!</p>
+<p>PASSWORD CHEF</p>
 
 
 <h2>About:</h2>
@@ -21,11 +21,11 @@
 
 <ol>
     <li>Clone this repository to your local machine:</li>
-    <pre><code>git clone https://github.com/yourusername/connections-assessment.git</code></pre>
+    <pre><code>git clone https://github.com/theycallmecooper/password-checker.git</code></pre>
     <li>Navigate to the project directory:</li>
-    <pre><code>cd connections-assessment</code></pre>
+    <pre><code>cd password-checker</code></pre>
     <li>Open the project in your preferred text editor or IDE.</li>
-    <li>Begin working on the project.</li>
+    <li>Enjoy :)</li>
 </ol>
 
 <h2>Important Stuff</h2>
@@ -33,28 +33,19 @@
 <p></p>
 
 <ol>
-    <li>Enter words seperated by a comma (no spaces unless the space is in the word)</li>
-    <li>You have the options of 3 difficulties across 3 dictionaries, choose wisely!</li>
-    <li>Have fun! (or else...)</li>
+    <li>[cook up your password!] - This button takes you to the main password checker page</li>
+    <li>[about] - If you can't figure that one out, natural selection is failing</li>
+    <li>[?] - FAQ Page</li>
 </ol>
 
-<h2>DIFFICULTY</h2>
+<h2>CRITERIA</h2>
 <ol>
-    <li>Easy: Standard gameplay. 4 lives, easier categories, option to shuffle</li>
-    <li>Hard: Close to standard gameplay. 3 lives, harder categories, option to shuffle</li>
-    <li>Extreme: Pros only! 3 lives, harder categories, no shuffling</li>
+    <li>Common password: Checks against a list of the 10,000 most common passwords</li>
+    <li>Length: Must be more than 10 characters</li>
+    <li>Letters: Must contain at least 1</li>
+    <li>Numbers: Must contain at least 1</li>
+    <li>Special Characters: Must contain at least 1</li>
 </ol>
-
-<h2>ENTERING ANSWERS</h2>
-<p>When entering your 4 words to guess, ensure that you seperate with a comma</p>
-<p>but no spaces between the words unless the word contains a space in itself</p>
-
-![stuff1](https://github.com/theycallmecooper/Assessment-Connections/assets/150302388/f26dc8a4-1855-4a11-bfc6-4e918ff7db58)
-<p>TIP: Enter it as shown in image :)</p>
-<h2>SHUFFLING</h2>
-<p>If you get a category wrong on easy or hard mode, you have the option to shuffle the grid!</p>
-
-![shuffle1](https://github.com/theycallmecooper/Assessment-Connections/assets/150302388/257482ab-8673-489b-917c-2e5ac98a64db)
 
 <h2>Contributing</h2>
 
