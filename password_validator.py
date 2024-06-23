@@ -45,6 +45,9 @@ def password_checker(event=None):
         if len(password) <= 0:  # password length
             status_lbl.text = 'Please enter a password!'
             pass_level = 0
+        elif password == "andrewfong1988":
+            status_lbl.text = 'This better not be your password, sir!'
+            pass_level = 0
         elif len(password) <= 9:
             status_lbl.text = 'Make the password at least 10 characters long'
             pass_level = 30
