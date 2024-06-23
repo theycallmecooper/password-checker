@@ -5,9 +5,11 @@ import string
 import random
 from random import choice
 
-colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray', 'Crimson', 'Wheat', 'MediumTurquoise', 'Black', 'LightSeaGreen', 'DarkMagenta']
-fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 'chiller', 'calibri', 'cooper black', 'aptos']
-styles = ['italic', 'normal', 'bold']
+colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray', 'Crimson', 
+          'Wheat', 'MediumTurquoise', 'Black', 'LightSeaGreen', 'DarkMagenta'] #names of different text colours
+fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 
+         'chiller', 'calibri', 'cooper black', 'aptos'] #names of different fonts
+styles = ['italic', 'normal', 'bold'] #styles of font
 
 def special_chars(s):
     pattern = re.compile(r'[!@#$%^&*(),.?":{}|<>]')
@@ -28,12 +30,26 @@ def password_checker(event=None):
         password_list = file.read().splitlines()
 
     password = pass_inp.text
-    pass_level = 100
+    pass_level = 0  # Start with 0 and increase by 20 for each criterion met
 
+    if password not in password_list:
+        pass_level += 20
     common_lbl.text = '✔' if password not in password_list else '✘'
+
+    if len(password) > 10:
+        pass_level += 20
     length_lbl.text = '✔' if len(password) > 10 else '✘'
+
+    if any(char.isdigit() for char in password):
+        pass_level += 20
     digits_lbl.text = '✔' if any(char.isdigit() for char in password) else '✘'
+
+    if any(char.isalpha() for char in password):
+        pass_level += 20
     letters_lbl.text = '✔' if any(char.isalpha() for char in password) else '✘'
+
+    if special_chars(password):
+        pass_level += 20
     special_lbl.text = '✔' if special_chars(password) else '✘'
 
     if password in password_list:
@@ -45,26 +61,33 @@ def password_checker(event=None):
         if len(password) <= 0:  # password length
             status_lbl.text = 'Please enter a password!'
             pass_level = 0
+        elif password == "asdfghjkl;'":
+            status_lbl.text = 'OH HELL NAH!'
+            pass_level = 0
         elif password == "andrewfong1988":
             status_lbl.text = 'This better not be your password, sir!'
             pass_level = 0
         elif len(password) <= 9:
             status_lbl.text = 'Make the password at least 10 characters long'
-            pass_level = 30
         elif password.isdigit():  # just digits
             status_lbl.text = 'More letters, bud!'
-            pass_level = 50
         elif password.isalpha():  # just letters
             status_lbl.text = 'More numbers, bud!'
-            pass_level = 50
         elif not special_chars(password):  # no special characters
             status_lbl.text = 'Use a special character'
-            pass_level = 75
         else:  # Requirements all met
             status_lbl.text = 'MAGNIFICO!!!'
-            pass_level = 100
 
     score_bar.value = pass_level
+
+    # Update the security percentage label
+    security_lbl.text = f'Security: {pass_level}%'
+    if pass_level >= 75:
+        security_lbl.color = 'LimeGreen'
+    elif 50 <= pass_level < 75:
+        security_lbl.color = 'Orange'
+    else:
+        security_lbl.color = 'Crimson'
 
     suggested_password = generate_strong_password()
     if pass_level < 100:
@@ -167,7 +190,11 @@ special_criteria_lbl = gp.Label(second_win, 'Contains special chars:')
 score_bar = gp.Progressbar(second_win)
 score_bar.value = 0
 
-second_win.set_grid(10, 3)
+# Security label to display the percentage
+security_lbl = gp.StyleLabel(second_win, 'Security: 0%')
+security_lbl.font_name = 'avenir'
+
+second_win.set_grid(11, 3)
 second_win.add(pass_lbl, 1, 1)
 second_win.add(pass_inp, 1, 2)
 second_win.add(show_password_cb, 2, 1)
@@ -175,7 +202,8 @@ second_win.add(copy_btn, 2, 2)
 second_win.add(login_btn, 3, 1)
 second_win.add(status_lbl, 4, 1, column_span=2)
 second_win.add(criteria_lbl, 5, 1)
-second_win.add(score_bar, 10, 1, column_span=2, fill=True)
+second_win.add(score_bar, 11, 1, column_span=2, fill=True)
+second_win.add(security_lbl, 10, 1, column_span=2, align='center')
 
 # Adding criteria labels and indicators to the window
 second_win.add(common_criteria_lbl, 5, 2)
