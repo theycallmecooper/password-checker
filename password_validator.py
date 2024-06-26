@@ -230,9 +230,9 @@ about_win = gp.Window(app, 'About')
 about_win.set_size(400, 260)
 about_lbl = gp.StyleLabel(about_win, "About Password Chef:\n\nPassword Chef is a password validation app designed to help users create strong, secure passwords.\nThe app checks for length, the presence of letters, numbers, and special characters to ensure\n your password is robust. It will be tested through different things such as (but not limited to)\nthe character length, if it contains special characters, if it contains numbers or if it contains capitals.\nA stronger password lessen the likelihood of having your information breached in a data leak.")
 about_lbl.font_size = 15
-about_lbl.color = 'LimeGreen'
+about_lbl.color = 'Black'
 about_lbl.align = 'center'
-about_lbl.font_name = 'cooper black'
+about_lbl.font_name = 'calibri'
 about_win.set_grid(1, 1)  # Setting the grid layout for the window
 about_win.add(about_lbl, 1, 1)  # Adding the label to the window
 
