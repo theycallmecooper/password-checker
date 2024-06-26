@@ -203,7 +203,7 @@ second_win.add(login_btn, 3, 1)
 second_win.add(status_lbl, 4, 1, column_span=2)
 second_win.add(criteria_lbl, 5, 1)
 second_win.add(score_bar, 11, 1, column_span=2, fill=True)
-second_win.add(security_lbl, 10, 1, column_span=2, align='center')
+second_win.add(security_lbl, 10, 1)
 
 # Adding criteria labels and indicators to the window
 second_win.add(common_criteria_lbl, 5, 2)
