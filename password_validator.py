@@ -44,9 +44,9 @@ def password_checker(event=None):
         pass_level += 20
     digits_lbl.text = '✔' if any(char.isdigit() for char in password) else '✘'
 
-    if any(char.isalpha() for char in password):
+    if any(char.isupper() for char in password):
         pass_level += 20
-    letters_lbl.text = '✔' if any(char.isalpha() for char in password) else '✘'
+    letters_lbl.text = '✔' if any(char.isupper() for char in password) else '✘'
 
     if special_chars(password):
         pass_level += 20
@@ -71,7 +71,7 @@ def password_checker(event=None):
             status_lbl.text = 'Make the password at least 10 characters long'
         elif password.isdigit():  # just digits
             status_lbl.text = 'More letters, bud!'
-        elif password.isalpha():  # just letters
+        elif password.isupper():  # just letters
             status_lbl.text = 'More numbers, bud!'
         elif not special_chars(password):  # no special characters
             status_lbl.text = 'Use a special character'
@@ -184,7 +184,7 @@ criteria_lbl = gp.Label(second_win, 'Criteria Met:')
 common_criteria_lbl = gp.Label(second_win, 'Not a common password:')
 length_criteria_lbl = gp.Label(second_win, 'Length > 10:')
 digits_criteria_lbl = gp.Label(second_win, 'Contains digits:')
-letters_criteria_lbl = gp.Label(second_win, 'Contains letters:')
+letters_criteria_lbl = gp.Label(second_win, 'Contains capitals:')
 special_criteria_lbl = gp.Label(second_win, 'Contains special chars:')
 
 score_bar = gp.Progressbar(second_win)
