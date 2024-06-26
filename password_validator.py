@@ -236,4 +236,5 @@ about_lbl.font_name = 'calibri'
 about_win.set_grid(1, 1)  # Setting the grid layout for the window
 about_win.add(about_lbl, 1, 1)  # Adding the label to the window
 
+app.set_icon('kitty-logo.png')
 app.run()
