@@ -6,7 +6,7 @@
 
 ![kitty-logo](https://github.com/theycallmecooper/password-checker/assets/150302388/bb9e58f8-925e-44ee-802d-e443b87c749d)
 
-<p>PASSWORD CHEF: #1 since the day God on the 7th day</p>
+<p>PASSWORD CHEF: #1 since the fall of the Roman Empire</p>
 
 
 <h2>About:</h2>
