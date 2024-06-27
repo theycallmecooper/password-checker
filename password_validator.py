@@ -127,6 +127,9 @@ def open_faq_window(event):
 def open_about_window(event):
     about_win.show()
 
+def open_secret_window(event):
+    secret_win.show()
+
 # Function to update the main title
 def say_hello(event):
     hello_ttl.text = 'Check your passwords security'
@@ -166,6 +169,10 @@ faq_button = gp.Button(app, '❓', open_faq_window)
 faq_button.font_name = 'avenir'
 faq_button.width = 10
 
+secret_button = gp.Button(app, '🦅', open_secret_window)
+secret_button.font_name = 'avenir'
+secret_button.width = 5
+
 # Arrange elements in a grid layout
 app.set_grid(6, 2)
 app.add(styled_label, 2, 1, column_span=2, align='center')
@@ -174,6 +181,7 @@ app.add(sub_ttl, 4, 1, column_span=2, align='center')
 app.add(open_button, 6, 1, column_span=1, align='left')
 app.add(about_button, 6, 2, column_span=1, align='right')
 app.add(faq_button, 5, 2, column_span=1, align='right')
+app.add(secret_button, 5, 1, column_span=1, align='left')
 
 # Second window (Validator) setup
 second_win = gp.Window(app, 'Password Validator')
@@ -243,7 +251,7 @@ second_win.add(special_lbl, 9, 3)
 # Third window (FAQ) setup
 faq_win = gp.Window(app, '?')
 faq_win.set_size(400, 260)
-faq_lbl = gp.StyleLabel(faq_win, "Frequently Asked Questions:\n\nQ1: How to use the app?\nA1: Enter your password and click 'Check Password'.\n\nQ2: What does the app check?\nA2: The app checks if your password meets the security criteria.\n\nQ3: What are the criteria?\nA3: The password should be at least 5 characters long, contain letters, numbers, and special characters.")
+faq_lbl = gp.StyleLabel(faq_win, "Frequently Asked Questions:\n\nQ1: How to use the app?\nA1: Enter your password and click 'Check Password'.\n\nQ2: What does the app check?\nA2: The app checks if your password meets the security criteria.\n\nQ3: What are the criteria?\nA3: The password should be at least 10 characters long, contain capital letters, numbers, special characters and not be common.")
 faq_lbl.font_name = 'avenir'
 faq_win.set_grid(2, 2)
 faq_win.add(faq_lbl, 1, 1)
@@ -258,6 +266,15 @@ about_lbl.align = 'center'
 about_lbl.font_name = 'calibri'
 about_win.set_grid(1, 1)  # Setting the grid layout for the window
 about_win.add(about_lbl, 1, 1)  # Adding the label to the window
+
+# Secret Window setup
+secret_win = gp.Window(app, 'Secret')
+secret_win.set_size(400, 260)
+secret_win.set_grid(1, 2)  # Setting the grid layout for the window
+face_img = gp.Image(secret_win, 'feel.jpeg')
+face_img1 = gp.Image(secret_win, 'chuck.jpeg')
+secret_win.add(face_img, 1, 1)
+secret_win.add(face_img1, 1, 2)
 
 # Set application icon and run the app
 app.set_icon('kitty-logo.png')
