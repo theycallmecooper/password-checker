@@ -274,7 +274,7 @@ secret_win.set_grid(1, 2)  # Setting the grid layout for the window
 face_img = gp.Image(secret_win, 'feel.jpeg')
 face_img1 = gp.Image(secret_win, 'chuck.jpeg')
 secret_win.add(face_img, 1, 1)
-secret_win.add(face_img1, 1, 2)
+secret_win.add(face_img1, 1, 2) #Just wait and find out ;)
 
 # Set application icon and run the app
 app.set_icon('kitty-logo.png')
