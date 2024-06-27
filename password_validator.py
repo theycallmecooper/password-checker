@@ -6,10 +6,10 @@ import random
 from random import choice
 
 colors = ['CornflowerBlue', 'LimeGreen', 'Orchid', 'DarkSlateGray', 'Crimson', 
-          'Wheat', 'MediumTurquoise', 'Black', 'LightSeaGreen', 'DarkMagenta'] #names of different text colours
+          'Wheat', 'MediumTurquoise', 'Black', 'LightSeaGreen', 'DarkMagenta']
 fonts = ['avenir', 'times new roman', 'comic sans ms', 'verdana', 
-         'chiller', 'calibri', 'cooper black', 'aptos'] #names of different fonts
-styles = ['italic', 'normal', 'bold'] #styles of font
+         'chiller', 'calibri', 'cooper black', 'aptos']
+styles = ['italic', 'normal', 'bold']
 
 def special_chars(s):
     pattern = re.compile(r'[!@#$%^&*(),.?":{}|<>]')
@@ -26,11 +26,11 @@ def copy_password(event):
     app.copy_to_clipboard(pass_inp.text)
 
 def password_checker(event=None):
-    with open("10k-most-common.txt", "r") as file: # Opens the .txt file and puts it into a list
+    with open("10k-most-common.txt", "r") as file:
         password_list = file.read().splitlines()
 
     password = pass_inp.text
-    pass_level = 0  # Start with 0 and increase by 20 for each criterion met
+    pass_level = 0
 
     if password not in password_list:
         pass_level += 20
@@ -58,7 +58,7 @@ def password_checker(event=None):
         status_lbl.text += f'\nSuggested Password: {suggested_password}'
         pass_level = 0
     else:
-        if len(password) <= 0:  # password length
+        if len(password) <= 0:
             status_lbl.text = 'Please enter a password!'
             pass_level = 0
         elif password == "asdfghjkl;'":
@@ -69,25 +69,27 @@ def password_checker(event=None):
             pass_level = 0
         elif len(password) <= 9:
             status_lbl.text = 'Make the password at least 10 characters long'
-        elif password.isdigit():  # just digits
+        elif password.isdigit():
             status_lbl.text = 'More letters, bud!'
-        elif password.isupper():  # just letters
+        elif password.isupper():
             status_lbl.text = 'More numbers, bud!'
-        elif not special_chars(password):  # no special characters
+        elif not special_chars(password):
             status_lbl.text = 'Use a special character'
-        else:  # Requirements all met
+        else:
             status_lbl.text = 'MAGNIFICO!!!'
 
     score_bar.value = pass_level
 
-    # Update the security percentage label
     security_lbl.text = f'Security: {pass_level}%'
     if pass_level >= 75:
         security_lbl.color = 'LimeGreen'
+        face_img.file = 'good.png'
     elif 50 <= pass_level < 75:
         security_lbl.color = 'Orange'
+        face_img.file = 'mid.png'
     else:
         security_lbl.color = 'Crimson'
+        face_img.file = 'bad.png'
 
     suggested_password = generate_strong_password()
     if pass_level < 100:
@@ -164,7 +166,7 @@ pass_lbl.font_size = 10
 pass_lbl.font_name = 'avenir'
 pass_inp = gp.Secret(second_win)
 pass_inp.font_name = 'avenir'
-pass_inp.add_event_listener('change', password_checker)  # Event listener for live updates
+pass_inp.add_event_listener('change', password_checker)
 login_btn = gp.Button(second_win, 'Check Password', password_checker)
 login_btn.font_name = 'avenir'
 status_lbl = gp.Label(second_win, '')
@@ -194,7 +196,10 @@ score_bar.value = 0
 security_lbl = gp.StyleLabel(second_win, 'Security: 0%')
 security_lbl.font_name = 'avenir'
 
-second_win.set_grid(11, 3)
+# Image to display face based on password security
+face_img = gp.Image(second_win, 'mid.png')
+
+second_win.set_grid(12, 3)
 second_win.add(pass_lbl, 1, 1)
 second_win.add(pass_inp, 1, 2)
 second_win.add(show_password_cb, 2, 1)
@@ -202,10 +207,10 @@ second_win.add(copy_btn, 2, 2)
 second_win.add(login_btn, 3, 1)
 second_win.add(status_lbl, 4, 1, column_span=2)
 second_win.add(criteria_lbl, 5, 1)
-second_win.add(score_bar, 11, 1, column_span=2, fill=True)
-second_win.add(security_lbl, 10, 1)
+second_win.add(score_bar, 12, 1, column_span=2, fill=True)
+second_win.add(security_lbl, 11, 1)
+second_win.add(face_img, 10, 1)
 
-# Adding criteria labels and indicators to the window
 second_win.add(common_criteria_lbl, 5, 2)
 second_win.add(common_lbl, 5, 3)
 second_win.add(length_criteria_lbl, 6, 2)
@@ -233,8 +238,8 @@ about_lbl.font_size = 15
 about_lbl.color = 'Black'
 about_lbl.align = 'center'
 about_lbl.font_name = 'calibri'
-about_win.set_grid(1, 1)  # Setting the grid layout for the window
-about_win.add(about_lbl, 1, 1)  # Adding the label to the window
+about_win.set_grid(1, 1)
+about_win.add(about_lbl, 1, 1)
 
 app.set_icon('kitty-logo.png')
 app.run()
